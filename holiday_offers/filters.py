@@ -56,7 +56,7 @@ def filter_data(
                 max_price = max(max_price, current_price)
                 min_price = min(min_price, current_price)
                 avg_price += current_price
-            except (KeyError, ValueError) as ex:  # pylint: disable=W0612
+            except (KeyError, ValueError, TypeError):
                 # TODO: Handle logging.
                 pass
 
