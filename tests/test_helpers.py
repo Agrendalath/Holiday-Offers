@@ -34,6 +34,12 @@ def test_generate_endpoint(custom_kwargs: Dict[str, str], expected: str):
         ('00:00', time(hour=0, minute=0)),
     ],
 )
-def test_str_to_time(data, expected):
+def test_str_to_time(data: str, expected: time):
     """Test string to time converter."""
     assert str_to_time(data) == expected
+
+
+def test_str_to_time_wrong_param():
+    """Test wrong time format."""
+    with pytest.raises(ValueError):
+        str_to_time('0000')
