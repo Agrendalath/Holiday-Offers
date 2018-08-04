@@ -15,7 +15,15 @@ def validate_offer(
     :param query: user's query params
     :return: bool
     """
+    # Check if all needed keys are present in offer.
+    if not set(FILTERS.values()) <= offer.keys():
+        # TODO: Handle logging
+        return False
+
     for key in query:
+        if key not in FILTERS:
+            raise BadRequest(f"Unknown parameter: {key}")
+
         this = offer.get(FILTERS[key])
         desired = query.get(key)
 
