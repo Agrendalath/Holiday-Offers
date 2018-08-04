@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./compose/production/api/Dockerfile
+    restart: always
+    command: /start.sh
+
+  caddy:
+    build:
+      context: ./compose/production/caddy
+    restart: always
+    depends_on:
+      - api
+    env_file:
+      - .env
+    ports:
+      - "0.0.0.0:80:80"
+      - "0.0.0.0:443:443"
