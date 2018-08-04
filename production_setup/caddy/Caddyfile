@@ -1,0 +1,8 @@
+{$URL} {
+    proxy / api:8000 {
+       transparent
+    }
+    log /var/log/caddy-access.log
+    errors /var/log/caddy-error.log
+    gzip
+}
