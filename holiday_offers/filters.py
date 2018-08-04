@@ -25,7 +25,7 @@ def strip_unnecessary_keys(
 
 
 def filter_data(
-    xml_data: str, query: ImmutableMultiDict
+    xml_data: str, query: Union[ImmutableMultiDict, Dict[str, str]]
 ) -> Dict[str, Union[Dict[str, str], List[Dict[str, str]]]]:
     """
     Retrieve offers from XML and filter them according to query params.
@@ -62,6 +62,8 @@ def filter_data(
 
     if result['offers']:
         avg_price /= len(result['offers'])
+    else:
+        max_price = min_price = 0
 
     result['summary'] = {
         'most_expensive_price': f'{max_price:.2f}',

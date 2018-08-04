@@ -1,6 +1,6 @@
 import requests
 
-from .constants import ENDPOINT
+from holiday_offers.constants import ENDPOINT
 
 
 def retrieve_data():
