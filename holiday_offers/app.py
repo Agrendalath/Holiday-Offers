@@ -9,7 +9,6 @@ app = Flask(__name__)  # pylint: disable=C0103
 @app.route('/')
 def hello_world():
     xml = retrieve_data()
-    print(request.args)
     result = filter_data(xml, request.args)
     return jsonify(result)
 
