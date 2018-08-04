@@ -5,10 +5,13 @@ name = "pypi"
 
 [packages]
 flask = "*"
+requests = "*"
 
 [dev-packages]
 pylint = "*"
 black = "*"
+pytest = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.7"
