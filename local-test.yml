@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./compose/local/api/Dockerfile
+    ports:
+      - "5000:5000"
+    command: /app/test.sh
