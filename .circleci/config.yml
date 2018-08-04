@@ -20,3 +20,10 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker build -f compose/production/api/Dockerfile -t agrendalath/holiday-offers:${CIRCLE_BRANCH} .
             docker push agrendalath/holiday-offers:${CIRCLE_BRANCH}
+
+      - run:
+          name: deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              ssh -oStrictHostKeyChecking=no $PRODUCTION_USER@$PRODUCTION_HOST $PRODUCTION_UPDATE_SCRIPT
+            fi
