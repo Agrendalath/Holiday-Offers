@@ -20,9 +20,3 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker build -f compose/production/api/Dockerfile -t agrendalath/holiday-offers:${CIRCLE_BRANCH} .
             docker push agrendalath/holiday-offers:${CIRCLE_BRANCH}
-
-
-
-
-
-
