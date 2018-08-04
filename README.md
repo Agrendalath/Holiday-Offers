@@ -2,6 +2,7 @@
 [![CircleCI](https://circleci.com/gh/Agrendalath/Holiday-Offers.svg?style=svg)](https://circleci.com/gh/Agrendalath/Holiday-Offers)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
+
 A simple Flask API for filtering holiday offers retrieved from external API.
 
 ## Manual usage
