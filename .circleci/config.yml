@@ -1,41 +1,28 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/python:3.7
-
-    environment:
-      PIPENV_VENV_IN_PROJECT:
+    machine: true
 
     working_directory: ~/repo
 
     steps:
       - checkout
 
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "Pipfile.lock" }}
-          - v1-dependencies-
-
-      - run:
-          name: install dependencies
-          command: |
-            pipenv sync --dev
-
-      - save_cache:
-          paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "Pipfile.lock" }}
-
-      - run:
-          name: run linters
-          command: |
-            pipenv run pylint holiday_offers
-            pipenv run black --check holiday_offers
-
       - run:
           name: run tests
           command: |
-            pipenv check
-            pipenv run coverage run -m pytest
-            pipenv run coverage report
+            docker build -f compose/local/api/Dockerfile -t holidayoffers:local .
+            docker run -it holidayoffers:local /app/test.sh
+
+      - run:
+          name: build image
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker build -f compose/production/api/Dockerfile -t agrendalath/holiday-offers:${CIRCLE_BRANCH} .
+            docker push agrendalath/holiday-offers:${CIRCLE_BRANCH}
+
+
+
+
+
+
