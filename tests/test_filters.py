@@ -41,9 +41,9 @@ def test_filter_data(
     """Test filtering data."""
     result = filter_data('', {'star_rating': str(stars)})
     assert 'summary' in result
-    assert result['summary']['most_expensive_price'] == f'{price:.2f}'
-    assert result['summary']['cheapest_price'] == f'{price:.2f}'
-    assert result['summary']['average_price'] == f'{price:.2f}'
+    assert result['summary']['most_expensive_price'] == price
+    assert result['summary']['cheapest_price'] == price
+    assert result['summary']['average_price'] == price
 
     assert 'offers' in result
     assert len(result['offers']) == offers

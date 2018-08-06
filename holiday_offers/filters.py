@@ -66,9 +66,9 @@ def filter_data(
         max_price = min_price = 0
 
     result['summary'] = {
-        'most_expensive_price': f'{max_price:.2f}',
-        'cheapest_price': f'{min_price:.2f}',
-        'average_price': f'{avg_price:.2f}',
+        'most_expensive_price': round(max_price, 2),
+        'cheapest_price': round(min_price, 2),
+        'average_price': round(avg_price, 2),
     }
 
     return result

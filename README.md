@@ -111,9 +111,9 @@ The only endpoint retrieves data from external API. You can use query params for
         }
       ], 
       "summary": {
-        "average_price": "514.71", 
-        "cheapest_price": "510.62", 
-        "most_expensive_price": "518.81"
+        "average_price": 514.71, 
+        "cheapest_price": 510.62, 
+        "most_expensive_price": 518.81
       }
     }
     ```
